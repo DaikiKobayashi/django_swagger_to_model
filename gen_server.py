@@ -19,4 +19,4 @@ if __name__ == '__main__':
                     write_code += '\n' + f"    {property_key} = None #[error]"
             
             class_file_name = re.sub(r'(?<!^)(?=[A-Z])', '_', key).lower()
-            Path(f'.gen_server/{class_file_name}.py').write_text(write_code)
+            Path(f'{__file__}\\..\\.gen_server\\{class_file_name}.py').write_text(write_code)
