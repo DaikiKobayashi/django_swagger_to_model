@@ -14,9 +14,9 @@ if __name__ == '__main__':
 
             for property_key, property_value in value['properties'].items():
                 if 'type' in property_value.keys():
-                    write_code += '\n' + f"    {property_key} = None #[{property_value['type']}]"
+                    write_code += '\n' + f"    {property_key} = None # {property_value['type']}"
                 else:
-                    write_code += '\n' + f"    {property_key} = None #[error]"
+                    write_code += '\n' + f"    {property_key} = None # error"
             
             class_file_name = re.sub(r'(?<!^)(?=[A-Z])', '_', key).lower()
             Path(f'{__file__}\\..\\.gen_server\\{class_file_name}.py').write_text(write_code)
