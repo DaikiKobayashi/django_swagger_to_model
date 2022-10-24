@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  description: "My Game Server"
+  version: 1.0.0
+  title: "My Game Server"
+  contact:
+    email: "daikikobayashi1910@gmail.com"
+host: "daikilabo.jp"
+basePath: "/v1"
+
+tags:
+  - name: Master
+    description: "Master Data"
+  - name: Player
+    description: "Player specific requests"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /getPlayer:
+    post:
+      tags:
+      - "player"
+      summary: "GetPlayer"
+      description: "GetPlayer"
+      operationId: "getPlayer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/GetPlayerRequest"
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/GetPlayerResutlt"
+        "405":
+          description: "Invalid input"
+      security:
+        - api_key: []
+                
+
+definitions:
+  GetPlayerRequest:
+    type: object
+
+  GetPlayerResutlt:
+    type: object
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      comment:
+        type: "string"
+
+  #@ BEGIN_MASTER_DATA
+  PlayerLevelMaster:
+    type: object
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+        x-nullable: false
+      level:
+        type: "integer"
+        format: "int64"
+      exp:
+        type: "integer"
+        format: "int64"
+
+  CardLevelMaster:
+    type: object
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+        x-nullable: false
+      level:
+        type: "integer"
+        format: "int64"
+      rank:
+        type: "integer"
+        format: "int64"
+      exp:
+        type: "integer"
+        format: "int64"
+  #@ END_MASTER_DATA
