@@ -5,7 +5,7 @@ info:
   title: "My Game Server"
   contact:
     email: "daikikobayashi1910@gmail.com"
-host: "daikilabo.jp"
+host: "localhost:8000"
 basePath: "/v1"
 
 tags:
@@ -14,16 +14,15 @@ tags:
   - name: Player
     description: "Player specific requests"
 schemes:
-  - "https"
   - "http"
 paths:
-  /getPlayer:
+  /registerAccount:
     post:
       tags:
       - "player"
-      summary: "GetPlayer"
-      description: "GetPlayer"
-      operationId: "getPlayer"
+      summary: "RegisterAccount"
+      description: "RegisterAccount"
+      operationId: "registerAccount"
       consumes:
       - "application/json"
       produces:
@@ -34,12 +33,12 @@ paths:
         description: ""
         required: true
         schema:
-          $ref: "#/definitions/GetPlayerRequest"
+          $ref: "#/definitions/RegisterAccountRequest"
       responses:
         "200":
           description: ""
           schema:
-            $ref: "#/definitions/GetPlayerResutlt"
+            $ref: "#/definitions/RegisterAccountResutlt"
         "405":
           description: "Invalid input"
       security:
@@ -47,18 +46,17 @@ paths:
                 
 
 definitions:
-  GetPlayerRequest:
-    type: object
-
-  GetPlayerResutlt:
+  RegisterAccountRequest:
     type: object
     properties:
-      id:
+      request_id:
         type: "integer"
         format: "int64"
-      name:
-        type: "string"
-      comment:
+
+  RegisterAccountResutlt:
+    type: object
+    properties:
+      uuid:
         type: "string"
 
   #@ BEGIN_MASTER_DATA
