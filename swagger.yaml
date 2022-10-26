@@ -59,7 +59,6 @@ definitions:
       uuid:
         type: "string"
 
-  #@ BEGIN_MASTER_DATA
   PlayerLevelMaster:
     type: object
     properties:
@@ -90,4 +89,3 @@ definitions:
       exp:
         type: "integer"
         format: "int64"
-  #@ END_MASTER_DATA
