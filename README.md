@@ -1,1 +1,1 @@
-# django_swagger_for_serger
+# django_swagger_to_model
